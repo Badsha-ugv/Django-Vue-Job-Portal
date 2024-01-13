@@ -40,6 +40,7 @@ class CandidateProfile(models.Model):
     github = models.URLField(max_length=100,blank=True,null=True)
     portfolio = models.URLField(max_length=100,blank=True,null=True)
     address = models.CharField(max_length=150,blank=True)
+    extra_activities = models.TextField(blank=True, null=True)
     slug = models.SlugField(unique=True)
     def save(self, *args, **kwargs):
         self.slug = slugify(self.user.username) 

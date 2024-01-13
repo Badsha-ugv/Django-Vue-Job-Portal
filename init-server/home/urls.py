@@ -11,7 +11,7 @@ urlpatterns = [
 
     # local app 
     path('candidate/',include('candidate.urls')),
-    path('candidate/',include('company.urls')),
+    path('company/',include('company.urls')),
     path('',include('authapp.urls')),
 
     # 3rd party integration
