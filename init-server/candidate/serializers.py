@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Education, Experience, Award, CandidateProfile 
+from .models import Education, Experience, Award, CandidateProfile, Project
 from authapp.serializers import UserSerializer 
 
 class ExperienceSerializer(serializers.ModelSerializer):
@@ -18,6 +18,12 @@ class AwardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Award
         fields = ['id','user', 'topic', 'title', 'organization', 'date', 'link']
+        read_only_fields = ['user']
+
+class ProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Project 
+        fields = ['id','user','title','descreption','link']
         read_only_fields = ['user']
 
 class CandidateProfileSerializer(serializers.ModelSerializer):

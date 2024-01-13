@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # import from app 
 from authapp.models import CustomUser
-from .models import Education, Experience, Award, CandidateProfile
+from .models import Education, Experience, Award, CandidateProfile, Project
 from .serializers import EducationSerializer, AwardSerializer, ExperienceSerializer, CandidateProfileSerializer
 
 class CandidateViewset(ModelViewSet):

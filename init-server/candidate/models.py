@@ -25,6 +25,12 @@ class Education(models.Model):
     passing_year = models.CharField( max_length=50)
     result = models.CharField(max_length=50,blank=True,null=True) 
 
+class Project(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='projects')
+    title = models.CharField(max_length=100)
+    descreption = models.TextField(blank=True,null=True) 
+    link= models.CharField(max_length=200,blank=True,null=True) 
+
 
 class CandidateProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)

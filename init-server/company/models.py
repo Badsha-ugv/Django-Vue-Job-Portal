@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 from authapp.models import CustomUser
+from candidate.models import CandidateProfile 
 
 class CompanyProfile(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE,blank=True,null=True)
@@ -33,4 +34,12 @@ class JobPost(models.Model):
     def __str__(self):
         return f'{self.company.name} post for {self.positon}' 
     
+class JobApplication(models.Model):
+    job = models.ForeignKey(JobPost, on_delete=models.CASCADE, 
+                            related_name='job_applications')
+    user = models.ForeignKey(CandidateProfile, on_delete=models.CASCADE, related_name='job_application_user')
+    expected_salary = models.CharField(max_length=5, blank=True,null=True) 
+    cover_letter = models.TextField(blank=True) 
+    date = models.DateField(datetime.datetime.now()) 
+
 
