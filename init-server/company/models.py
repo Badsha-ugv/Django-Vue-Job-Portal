@@ -4,13 +4,13 @@ from authapp.models import CustomUser
 from candidate.models import CandidateProfile 
 
 class CompanyProfile(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE,blank=True,null=True)
-    user_avatar = models.ImageField(upload_to='hunter_avatar/',blank=True,null=True)
-    designation = models.CharField(max_length=100,blank=True,null=True) 
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    position = models.CharField(max_length=50,blank=True,null=True)
+    image = models.ImageField(upload_to='jobHunter_profile/', blank=True,null=True)
     company_name = models.CharField(max_length=100, null=True)
     company_type = models.CharField(max_length=100,blank=True,null=True)
     about = models.TextField(blank=True,null=True)
-    address = models.TextField(blank=True, null=True) 
+    address = models.CharField(max_length=200,blank=True, null=True) 
     city = models.CharField(max_length=50, blank=True, null= True) 
     company_logo = models.ImageField(upload_to='company_logo/', blank=True,null=True)
 
